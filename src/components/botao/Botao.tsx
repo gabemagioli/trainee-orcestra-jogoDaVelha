@@ -1,9 +1,9 @@
-import "./botao.module.css"
+import styles from "./botao.module.css"
 
 function Botao(props:{texto:string}){
     return(
         <>
-            <button>{props.texto}</button>
+            <button className={styles.botao}>{props.texto}</button>
         </>
     )
 }
