@@ -4,11 +4,10 @@ function Jogo(){
     
     return(
         <>
-<<<<<<< HEAD
             <div className={styles.main}>
                 <div className={styles.botoes}>
-                    <Botao texto={"voltar"}/>
-                    <Botao texto={"reiniciar"}/>
+                    <button className={styles.botaoJogo}>Voltar</button>
+                    <button className={styles.botaoJogo}>Reiniciar</button>
                 </div>
 
                 <div className={styles.placar}>
@@ -24,9 +23,6 @@ function Jogo(){
                     <div className={styles.jogador}>Y</div>
                     </div>
                 </div>
-=======
-            <div className={styles.tabuleiro}>
->>>>>>> 24da14761fcc4297a812d8efbfcd3f3b9505c6de
             </div>
         </>
     )
