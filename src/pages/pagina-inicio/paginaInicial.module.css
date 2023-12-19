@@ -52,3 +52,18 @@
     padding:5px;
     border:none;
 }
+
+/* estilizacao do botao */
+.prosseguirBotao{
+    background-color: rgb(251, 131, 131);
+    padding:10px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+}
+.prosseguirBotao:hover{
+    opacity: 70%;
+    transition: 0.5s;
+}

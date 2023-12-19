@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styles from './paginaInicial.module.css';
-import Botao from '../../components/botao/Botao';
+import { useNavigate } from "react-router-dom";
 
-export const PaginaInicial = () => {
+export const PaginaInicial:React.FC = () => {
     const[jogadorX, setJogadorX] = useState("");
     const[jogadorO, setJogadorO]= useState("");
 
@@ -18,6 +18,8 @@ export const PaginaInicial = () => {
         return e.target.value;
     }
 
+    const navigate = useNavigate();
+
   return (
     <>
         <section className={styles.paginaInicio}>
@@ -32,7 +34,7 @@ export const PaginaInicial = () => {
                         <label htmlFor="jogadorO" className={styles.labelNomes}>Nome do jogador O</label>
                         <input id={styles.jogadorO} type="text" placeholder="nome do jogador O" value={jogadorO} onChange={(e) => recebeNomeO(e)}/>
                     </div>
-                    <Botao texto={"Prosseguir"}/> {/*botao que ira redirecionar para a pagina do jogo */}
+                    <button className={styles.prosseguirBotao} onClick={() => navigate("/jogo")}>Prosseguir</button>
                 </div>
             </div>
         </section>
