@@ -1,10 +1,10 @@
-import Botao from "../../components/botao/Botao";
 import styles from './jogo.module.css';
 
 function Jogo(){
     
     return(
         <>
+<<<<<<< HEAD
             <div className={styles.main}>
                 <div className={styles.botoes}>
                     <Botao texto={"voltar"}/>
@@ -24,6 +24,9 @@ function Jogo(){
                     <div className={styles.jogador}>Y</div>
                     </div>
                 </div>
+=======
+            <div className={styles.tabuleiro}>
+>>>>>>> 24da14761fcc4297a812d8efbfcd3f3b9505c6de
             </div>
         </>
     )
