@@ -4,19 +4,35 @@
     padding:20px;
     display:flex;
     justify-content: center;
-    height:750px;
+    height:738px;
+    margin-top: -8px;
+    margin-right: -8px;
+    margin-left: -8px;
 }
+
+.text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bemVindo{
+    color: rgb(110, 5, 58);
+    margin-top: 80px;
+    font-size: 30px;
+}
+
 .nomes{
     display: flex;
     flex-direction: column;
     padding:50px;
     /* background-color: rgb(137, 136, 136); */
-    background-image: url("https://img.freepik.com/fotos-premium/icone-de-engrenagens-vermelhas-no-conceito-de-mecanica-de-engenharia-de-engrenagem-de-fundo-rosa-estilo-minimo-de-desenho-animado-3d-render-ilustracao_598821-519.jpg?w=2000");
+    background-image: url("https://img.freepik.com/fotos-premium/icone-de-engrenagens-vermelhas-no-conceito-de-mecanica-de-engenharia-de-engrenagem-de-fundo-rosa-estilo-minimo-de-desenho-animado-3d-render-ilustracao_598821-519.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1698019200&semt=ais");
     background-size: cover;
     border-radius:10%;
     height:260px;
     justify-content: center;
-    margin-top:150px;
+    margin-top:110px;
 }
 .infoJogador{
     display:flex;
