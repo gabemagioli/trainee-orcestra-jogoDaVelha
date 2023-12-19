@@ -5,8 +5,25 @@ function Jogo(){
     
     return(
         <>
-            <div className={styles.tabuleiro}>
-                <Botao texto={"o"}/>
+            <div className={styles.main}>
+                <div className={styles.botoes}>
+                    <Botao texto={"voltar"}/>
+                    <Botao texto={"reiniciar"}/>
+                </div>
+
+                <div className={styles.placar}>
+                    <div className={styles.pontuacao}>
+                        <div className={styles.jogador}>X</div>
+                    </div>
+
+                    <div className={styles.jogo}>
+
+                    </div>
+
+                    <div className={styles.pontuacao}>
+                    <div className={styles.jogador}>Y</div>
+                    </div>
+                </div>
             </div>
         </>
     )
