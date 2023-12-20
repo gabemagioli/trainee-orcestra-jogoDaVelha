@@ -7,13 +7,15 @@ export const PaginaInicial:React.FC = () => {
     const[jogadorO, setJogadorO]= useState("");
 
     const recebeNomeX = (e:any):string => {//funcao que recebe o nome do jogador X
-        setJogadorX(e.target.value);
+        setJogadorX(e.target.value);//encontra o valor do input
+        localStorage.setItem("jogadorX", jogadorX);//salva localmente as informacoes na maquina
         console.log(e.target.value);
         return e.target.value;
       };
 
     const recebeNomeO = (e:any):string => {//funcao que recebe o nome do jogador O
         setJogadorO(e.target.value);
+        localStorage.setItem("JogadorO", jogadorO);//salva localmente as informacoes na maquina
         console.log(e.target.value);
         return e.target.value;
     }
