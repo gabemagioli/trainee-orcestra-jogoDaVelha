@@ -25,6 +25,14 @@
     display: flex;
     align-items: center;
 }
+.jogo{
+    background-image: url("https://weart.com.br/media/productcustom/_DSC0006_1__1.png");
+    background-size: cover;
+    margin-left:300px;
+    margin-right:300px;
+    width:500px;
+    height:500px;
+}
 
 .pontuacao{
     margin-left: 50px;
@@ -40,6 +48,8 @@
 
 .jogador{
     color: aliceblue;
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
     font-size: 20px;
 }

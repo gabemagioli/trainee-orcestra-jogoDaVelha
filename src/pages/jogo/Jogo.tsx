@@ -4,7 +4,7 @@ function Jogo(){
     
     return(
         <>
-            <div className={styles.main}>
+            <section className={styles.main}>
                 <div className={styles.botoes}>
                     <button className={styles.botaoJogo}>Voltar</button>
                     <button className={styles.botaoJogo}>Reiniciar</button>
@@ -12,18 +12,22 @@ function Jogo(){
 
                 <div className={styles.placar}>
                     <div className={styles.pontuacao}>
-                        <div className={styles.jogador}>X</div>
+                        <div className={styles.jogador}>
+                            <p>X</p>
+                        </div>
                     </div>
 
                     <div className={styles.jogo}>
-
+                        <p>o</p>
                     </div>
 
                     <div className={styles.pontuacao}>
-                    <div className={styles.jogador}>Y</div>
+                        <div className={styles.jogador}>
+                            <p>O</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }
