@@ -1,12 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './jogo.module.css';
 
 function Jogo(){
     
+    const navigate = useNavigate();
+
     return(
         <>
             <section className={styles.main}>
                 <div className={styles.botoes}>
-                    <button className={styles.botaoVoltar}>Voltar</button>
+                    <button className={styles.botaoVoltar} onClick={()=> navigate("/")}>Voltar</button>
                 </div>
 
                 <div className={styles.placar}>
