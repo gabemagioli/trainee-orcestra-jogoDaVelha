@@ -6,8 +6,7 @@ function Jogo(){
         <>
             <section className={styles.main}>
                 <div className={styles.botoes}>
-                    <button className={styles.botaoJogo}>Voltar</button>
-                    <button className={styles.botaoJogo}>Reiniciar</button>
+                    <button className={styles.botaoVoltar}>Voltar</button>
                 </div>
 
                 <div className={styles.placar}>
@@ -18,7 +17,7 @@ function Jogo(){
                     </div>
 
                     <div className={styles.jogo}>
-                        <p>o</p>
+                
                     </div>
 
                     <div className={styles.pontuacao}>
@@ -27,6 +26,7 @@ function Jogo(){
                         </div>
                     </div>
                 </div>
+                <button className={styles.botaoReiniciar}>Reiniciar</button>
             </section>
         </>
     )

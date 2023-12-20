@@ -12,13 +12,24 @@
     height: 50px;
 }
 
-.botaoJogo{
+.botaoVoltar{
     border-radius: 10%;
-    background-color: rgb(221, 61, 154);
+    background-color: rgb(253, 104, 191);
     color: aliceblue;
     width: 70px;
     height: 50px;
-    border: solid rgb(247, 186, 238);
+    border: solid rgb(107, 101, 106);
+}
+
+.botaoReiniciar{
+    border-radius: 10%;
+    background-color: rgb(250, 65, 173);
+    color: aliceblue;
+    width: 70px;
+    height: 50px;
+    border: solid rgb(196, 184, 194);
+    margin-left: 720px;
+    margin-top: 30px;
 }
 
 .placar{
@@ -37,11 +48,10 @@
 .pontuacao{
     margin-left: 50px;
     margin-top: 50px;
-    width: 50px;
+    width: 80px;
     background: linear-gradient(rgb(221, 61, 154) , rgb(190, 61, 167));
     border: solid rgb(247, 186, 238);;
-    /*background-color:rgb(255, 86, 86);*/
-    height: 200px;
+    height: 230px;
     padding: 30px;
     border-radius: 6%;
 }
