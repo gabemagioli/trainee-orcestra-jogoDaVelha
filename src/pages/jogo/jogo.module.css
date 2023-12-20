@@ -1,5 +1,5 @@
 .main{
-    background: linear-gradient(rgb(179, 179, 179) , rgb(80, 73, 58));
+    background: linear-gradient(rgb(145, 144, 144) , rgb(80, 73, 58));
     height: 770px;
     margin-left: -8px;
     margin-right: -8px;
@@ -12,6 +12,15 @@
     height: 50px;
 }
 
+.botaoJogo{
+    border-radius: 10%;
+    background-color: rgb(221, 61, 154);
+    color: aliceblue;
+    width: 70px;
+    height: 50px;
+    border: solid rgb(247, 186, 238);
+}
+
 .placar{
     display: flex;
     align-items: center;
@@ -21,7 +30,9 @@
     margin-left: 50px;
     margin-top: 50px;
     width: 50px;
-    background-color:rgb(255, 86, 86);
+    background: linear-gradient(rgb(221, 61, 154) , rgb(190, 61, 167));
+    border: solid rgb(247, 186, 238);;
+    /*background-color:rgb(255, 86, 86);*/
     height: 200px;
     padding: 30px;
     border-radius: 6%;
