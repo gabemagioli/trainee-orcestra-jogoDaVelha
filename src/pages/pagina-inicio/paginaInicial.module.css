@@ -1,3 +1,4 @@
+/* corpo da pagina principal */
 .paginaInicio{
     background: linear-gradient(rgb(255, 128, 153), rgb(255, 86, 86));
     background-size: cover;
@@ -6,27 +7,27 @@
     justify-content: center;
     height:738px;
     margin-top: -8px;
+    margin-bottom:-10px;
     margin-right: -8px;
     margin-left: -8px;
 }
-
-.text{
+/* formulario para captacao do nome dos jogadores */
+.form{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+/* titulo principal da pagina inicial -> boas vindas ao jogo da engrenovia */
 .bemVindo{
     color: rgb(110, 5, 58);
     margin-top: 80px;
     font-size: 30px;
 }
-
+/* div que engloba a "caixa" que recebem os nomes dos usuarios */
 .nomes{
     display: flex;
     flex-direction: column;
     padding:50px;
-    /* background-color: rgb(137, 136, 136); */
     background-image: url("https://img.freepik.com/fotos-premium/icone-de-engrenagens-vermelhas-no-conceito-de-mecanica-de-engenharia-de-engrenagem-de-fundo-rosa-estilo-minimo-de-desenho-animado-3d-render-ilustracao_598821-519.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1698019200&semt=ais");
     background-size: cover;
     border-radius:10%;
@@ -34,6 +35,7 @@
     justify-content: center;
     margin-top:110px;
 }
+/* div que engloba o label e input -> nome do jogador X e O */
 .infoJogador{
     display:flex;
     flex-direction:column;

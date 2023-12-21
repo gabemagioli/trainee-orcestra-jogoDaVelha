@@ -52,7 +52,7 @@
     width: 180px;
     background: linear-gradient(rgb(221, 61, 154) , rgb(190, 61, 167));
     border: solid rgb(247, 186, 238);;
-    height: 70px;
+    height: auto;
     padding: 30px;
     border-radius: 6%;
 }
@@ -63,4 +63,6 @@
     justify-content: center;
     margin-top: 10px;
     font-size: 20px;
+    display:flex;
+    flex-direction:column;
 }

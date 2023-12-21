@@ -3,8 +3,8 @@ import styles from './paginaInicial.module.css';
 import { useNavigate } from "react-router-dom";
 
 export const PaginaInicial:React.FC = () => {
-    const[jogadorX, setJogadorX] = useState("");
-    const[jogadorO, setJogadorO]= useState("");
+    const[jogadorX, setJogadorX] = useState<string>("");//variavel que recebe apenas valor em string(texto)
+    const[jogadorO, setJogadorO]= useState<string>("");
 
     const recebeNomeX = (e:any):string => {//funcao que recebe o nome do jogador X
         setJogadorX(e.target.value);//encontra o valor do input
@@ -25,9 +25,9 @@ export const PaginaInicial:React.FC = () => {
   return (
     <>
         <section className={styles.paginaInicio}>
-            <div className={styles.text}>
-            <div className={styles.bemVindo}>Bem-vindo ao jogo da velha da Engrenóvia!</div>
-                <div className={styles.nomes}>
+            <div className={styles.form}>
+                <h1 className={styles.bemVindo}>Bem-vindo ao jogo da velha da Engrenóvia!</h1>
+                <form className={styles.nomes}>
                     <div className={styles.infoJogador}>
                         <label htmlFor="jogadorX" className={styles.labelNomes}>Nome do jogador X</label>
                         <input id={styles.jogadorX} type="text" placeholder="nome do jogador X" value={jogadorX} onChange={(e) => recebeNomeX(e)}/>
@@ -37,9 +37,9 @@ export const PaginaInicial:React.FC = () => {
                         <input id={styles.jogadorO} type="text" placeholder="nome do jogador O" value={jogadorO} onChange={(e) => recebeNomeO(e)}/>
                     </div>
                     <button className={styles.prosseguirBotao} onClick={() => navigate("/jogo")}>Prosseguir</button>
-                </div>
+                </form>
             </div>
         </section>
     </>
-  )
+  );
 }
