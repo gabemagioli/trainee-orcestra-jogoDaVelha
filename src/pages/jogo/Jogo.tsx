@@ -43,6 +43,29 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     }
     
 
+    const joga = (e) => {
+        if(jogando == true){
+            if(VerificaEspacoVazio(e)){
+                jogo[retPos(e)[0], retPos(e)[1]] = simboloAtual;
+                trocaJogador();
+                if(verificaVitoria()){
+                    trocaJogador();
+                    alert("Jogador" + simboloAtual + "venceu");
+                    setJogando(false);
+                }
+                else{
+                    alert("Esse espaco ja esta ocupado, escolha uma posicao vazia");
+                }
+            }
+        }
+    }
+
+    const reiniciarJogo = () => {
+        setJogando(true);
+        setJogo(jogoInicial);
+        setSimboloAtual("x");
+    }
+
     return(
         <>
             <section className={styles.main}>
@@ -71,7 +94,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                         </div>
                     </div>
                 </div>
-                <button className={styles.botaoReiniciar}>Reiniciar</button>
+                <button className={styles.botaoReiniciar} onClick={() => reiniciarJogo()}>Reiniciar</button>
             </section>
         </>
     )
