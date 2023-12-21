@@ -25,27 +25,28 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         return "Erro na funcao nao entrou em nenhuma das 2 condicionais - um parametro foi passado errado";//caso nao entrar em nenhuma das condicionais retorna mensagem de erro
     }
 
-    const [jogo, setJogo]: Array<Array<string>> = useState([['', '', ''], ['', '', ''], ['', '', '']])
-    const [jogadorAtual, setJogadorAtual]=useState('X')
-    const [jogando,setJogando]=useState(true)
+    const jogoInicial:string[][] = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]];    
+    const [jogo, setJogo] = useState<string[][]>([['', '', ''], ['', '', ''], ['', '', '']])
+    const [simboloAtual, setSimboloAtual]=useState<string>('X')
+    const [jogando,setJogando]=useState<boolean>(true)
 
-    const tabuleiro=(jogo) =>{
+    const tabuleiro=(jogo:any) =>{
         return(
-            <div style={jogo}>
-                <div className={style.linha}>
-                    <div className={styles.coluna} data-pos='00' onCLick="">{jogo[0][0]}</div>
-                    <div ClassName={styles.coluna} data-pos='01' onCLick="">{jogo[0][1]}</div>
-                    <div ClassName={styles.coluna} data-pos='02' onCLick="">{jogo[0][2]}</div>
+            <div className={styles.tabu}>
+                <div className={styles.tabuLinha}>
+                    <div className={styles.casa} data-pos='00' onClick="">{jogo[0][0]}</div>
+                    <div className={styles.casa} data-pos='01' onClick="">{jogo[0][1]}</div>
+                    <div className={styles.casa} data-pos='02' onClick="">{jogo[0][2]}</div>
                 </div>
-                <div className={style.linha}>
-                    <div ClassName={styles.coluna} data-pos='10' onCLick="">{jogo[1][0]}</div>
-                    <div ClassName={styles.coluna} data-pos='11' onCLick="">{jogo[1][1]}</div>
-                    <div ClassName={styles.coluna} data-pos='12' onCLick="">{jogo[1][2]}</div>
+                <div className={styles.tabuLinha}>
+                    <div className={styles.casa} data-pos='10' onClick="">{jogo[1][0]}</div>
+                    <div className={styles.casa} data-pos='11' onClick="">{jogo[1][1]}</div>
+                    <div className={styles.casa} data-pos='12' onClick="">{jogo[1][2]}</div>
                 </div>
-                <div className={style.linha}>
-                    <div ClassName={styles.coluna}} data-pos='20' onCLick="">{jogo[2][0]}</div>
-                    <div ClassName={styles.coluna} data-pos='21' onCLick="">{jogo[2][1]}</div>
-                    <div ClassName={styles.coluna} data-pos='22' onCLick="">{jogo[2][2]}</div>
+                <div className={styles.tabuLinha}>
+                    <div className={styles.casa} data-pos='20' onClick="">{jogo[2][0]}</div>
+                    <div className={styles.casa} data-pos='21' onClick="">{jogo[2][1]}</div>
+                    <div className={styles.casa} data-pos='22' onClick="">{jogo[2][2]}</div>
                 </div>
             </div>
         )
