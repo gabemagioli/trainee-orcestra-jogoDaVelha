@@ -104,7 +104,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     }
    
 
-    const joga = (e:any) => {
+    const jogar = (e:any) => {
         if(jogando){
             if(verificaEspacoVazio(e)){
                 jogo[retPos(e)[0]][retPos(e)[1]] = simboloAtual;
@@ -112,6 +112,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                 if(verificaVitoria()){
                     trocaJogador();
                     alert("Jogador" + simboloAtual + "venceu");
+                    ganhaPonto(simboloAtual);
                     setJogando(false);
                 }
                 else{
@@ -146,19 +147,19 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
 
                     <div className={styles.jogo}>
                         <div className={styles.tabuLinha}>
-                            <div className={styles.casa} data-pos='00' onClick="">{jogo[0][0]}</div>
-                            <div className={styles.casa} data-pos='01' onClick="">{jogo[0][1]}</div>
-                            <div className={styles.casa} data-pos='02' onClick="">{jogo[0][2]}</div>
+                            <div className={styles.casa} data-pos='00' onClick={(e) => jogar(e)}>{jogo[0][0]}</div>
+                            <div className={styles.casa} data-pos='01' onClick={(e) => jogar(e)}>{jogo[0][1]}</div>
+                            <div className={styles.casa} data-pos='02' onClick={(e) => jogar(e)}>{jogo[0][2]}</div>
                         </div>
                         <div className={styles.tabuLinha}>
-                            <div className={styles.casa} data-pos='10' onClick="">{jogo[1][0]}</div>
-                            <div className={styles.casa} data-pos='11' onClick="">{jogo[1][1]}</div>
-                            <div className={styles.casa} data-pos='12' onClick="">{jogo[1][2]}</div>
+                            <div className={styles.casa} data-pos='10' onClick={(e) => jogar(e)}>{jogo[1][0]}</div>
+                            <div className={styles.casa} data-pos='11' onClick={(e) => jogar(e)}>{jogo[1][1]}</div>
+                            <div className={styles.casa} data-pos='12' onClick={(e) => jogar(e)}>{jogo[1][2]}</div>
                         </div>
                         <div className={styles.tabuLinha}>
-                            <div className={styles.casa} data-pos='20' onClick="">{jogo[2][0]}</div>
-                            <div className={styles.casa} data-pos='21' onClick="">{jogo[2][1]}</div>
-                            <div className={styles.casa} data-pos='22' onClick="">{jogo[2][2]}</div>
+                            <div className={styles.casa} data-pos='20' onClick={(e) => jogar(e)}>{jogo[2][0]}</div>
+                            <div className={styles.casa} data-pos='21' onClick={(e) => jogar(e)}>{jogo[2][1]}</div>
+                            <div className={styles.casa} data-pos='22' onClick={(e) => jogar(e)}>{jogo[2][2]}</div>
                         </div>
                     </div>
 

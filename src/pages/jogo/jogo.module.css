@@ -44,7 +44,7 @@
     align-items: center;
 }
 .jogo{
-    background-image: url("https://weart.com.br/media/productcustom/_DSC0006_1__1.png");
+    /* background-image: url("https://weart.com.br/media/productcustom/_DSC0006_1__1.png"); */
     background-size: cover;
     margin-left:190px;
     margin-right:200px;
@@ -72,4 +72,31 @@
     font-size: 20px;
     display:flex;
     flex-direction:column;
+}
+
+
+
+
+
+/* tabuleiro */
+.tabu{
+    display: flex;
+    flex-direction: column;
+}
+
+.tabuLinha{
+    display: flex;
+    flex-direction: row;
+}
+
+.casa{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+    font-size: 60px;
+    border: 3px solid #000
 }
