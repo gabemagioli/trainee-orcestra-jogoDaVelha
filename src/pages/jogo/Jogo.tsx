@@ -33,7 +33,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                     <button className={styles.botaoVoltar} onClick={()=> navigate("/")}>Voltar</button>
                 </div>
 
-                <div className={styles.vezJogador}>Vez do jogador: </div>
+                <h1 className={styles.vezJogador}>Vez do jogador: </h1>
 
                 <div className={styles.placar}>
                     <div className={styles.pontuacao}>
