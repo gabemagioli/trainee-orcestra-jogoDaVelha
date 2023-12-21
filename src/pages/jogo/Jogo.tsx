@@ -24,6 +24,22 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         }
         return "Erro na funcao nao entrou em nenhuma das 2 condicionais - um parametro foi passado errado";//caso nao entrar em nenhuma das condicionais retorna mensagem de erro
     }
+
+    const [jogo, setJogo]: Array<Array<string>> = useState([['', '', ''], ['', '', ''], ['', '', '']])
+    const [jogadorAtual, setJogadorAtual]=useState('X')
+    const [jogando,setJogando]=useState(true)
+
+    const tabuleiro=(jogo) =>{
+        return(
+            <div style={jogo}>
+                <div style={linha}>
+                    <div style={coluna} data-pos='00' onCLick="">
+
+                    </div>
+                </div>
+            </div>
+        )
+    }
     
 
     return(
@@ -33,7 +49,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                     <button className={styles.botaoVoltar} onClick={()=> navigate("/")}>Voltar</button>
                 </div>
 
-                <h1 className={styles.vezJogador}>Vez do jogador: </h1>
+                <h1 className={styles.vezJogador}>Vez do jogador: {jogadorAtual}</h1>
 
                 <div className={styles.placar}>
                     <div className={styles.pontuacao}>
