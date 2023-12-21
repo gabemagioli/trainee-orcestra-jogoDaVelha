@@ -25,7 +25,23 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         return "Erro na funcao nao entrou em nenhuma das 2 condicionais - um parametro foi passado errado";//caso nao entrar em nenhuma das condicionais retorna mensagem de erro
     }
 
-    const tabuleiroInicial:Array<Array<string>> = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]];    
+    const tabuleiroInicial:string[][] = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]];    
+    const [jogo, setJogo] = useState<string[][]>([['', '', ''], ['', '', ''], ['', '', '']])
+    const [jogadorAtual, setJogadorAtual]=useState<string>('X')
+    const [jogando,setJogando]=useState<boolean>(true)
+
+    const tabuleiro=(jogo:any) =>{
+        return(
+            <div className={styles.jogo}>
+                <div className={styles.linha}>
+                    <div className={styles.coluna} data-pos='00' onClick={}>
+
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    
 
     return(
         <>
@@ -34,7 +50,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                     <button className={styles.botaoVoltar} onClick={()=> navigate("/")}>Voltar</button>
                 </div>
 
-                <h1 className={styles.vezJogador}>Vez do jogador:</h1>
+                <h1 className={styles.vezJogador}>Vez do jogador: {jogadorAtual}</h1>
 
                 <div className={styles.placar}>
                     <div className={styles.pontuacao}>
