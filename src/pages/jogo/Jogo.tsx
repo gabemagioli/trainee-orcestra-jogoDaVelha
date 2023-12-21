@@ -32,15 +32,24 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     const tabuleiro=(jogo) =>{
         return(
             <div style={jogo}>
-                <div style={linha}>
-                    <div style={coluna} data-pos='00' onCLick="">
-
-                    </div>
+                <div className={style.linha}>
+                    <div className={styles.coluna} data-pos='00' onCLick="">{jogo[0][0]}</div>
+                    <div ClassName={styles.coluna} data-pos='01' onCLick="">{jogo[0][1]}</div>
+                    <div ClassName={styles.coluna} data-pos='02' onCLick="">{jogo[0][2]}</div>
+                </div>
+                <div className={style.linha}>
+                    <div ClassName={styles.coluna} data-pos='10' onCLick="">{jogo[1][0]}</div>
+                    <div ClassName={styles.coluna} data-pos='11' onCLick="">{jogo[1][1]}</div>
+                    <div ClassName={styles.coluna} data-pos='12' onCLick="">{jogo[1][2]}</div>
+                </div>
+                <div className={style.linha}>
+                    <div ClassName={styles.coluna}} data-pos='20' onCLick="">{jogo[2][0]}</div>
+                    <div ClassName={styles.coluna} data-pos='21' onCLick="">{jogo[2][1]}</div>
+                    <div ClassName={styles.coluna} data-pos='22' onCLick="">{jogo[2][2]}</div>
                 </div>
             </div>
         )
     }
-    
 
     return(
         <>
