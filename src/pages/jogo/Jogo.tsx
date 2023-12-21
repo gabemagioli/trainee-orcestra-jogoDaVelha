@@ -30,27 +30,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     const [simboloAtual, setSimboloAtual]=useState<string>('X')
     const [jogando,setJogando]=useState<boolean>(true)
 
-    const tabuleiro=(jogo:any) =>{
-        return(
-            <div className={styles.tabu}>
-                <div className={styles.tabuLinha}>
-                    <div className={styles.casa} data-pos='00' onClick="">{jogo[0][0]}</div>
-                    <div className={styles.casa} data-pos='01' onClick="">{jogo[0][1]}</div>
-                    <div className={styles.casa} data-pos='02' onClick="">{jogo[0][2]}</div>
-                </div>
-                <div className={styles.tabuLinha}>
-                    <div className={styles.casa} data-pos='10' onClick="">{jogo[1][0]}</div>
-                    <div className={styles.casa} data-pos='11' onClick="">{jogo[1][1]}</div>
-                    <div className={styles.casa} data-pos='12' onClick="">{jogo[1][2]}</div>
-                </div>
-                <div className={styles.tabuLinha}>
-                    <div className={styles.casa} data-pos='20' onClick="">{jogo[2][0]}</div>
-                    <div className={styles.casa} data-pos='21' onClick="">{jogo[2][1]}</div>
-                    <div className={styles.casa} data-pos='22' onClick="">{jogo[2][2]}</div>
-                </div>
-            </div>
-        )
-    }
+   
 
     const joga = (e) => {
         if(jogando == true){
@@ -82,7 +62,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                     <button className={styles.botaoVoltar} onClick={()=> navigate("/")}>Voltar</button>
                 </div>
 
-                <h1 className={styles.vezJogador}>Vez do jogador: {jogadorAtual}</h1>
+                <h1 className={styles.vezJogador}>Vez do jogador: {simboloAtual}</h1>
 
                 <div className={styles.placar}>
                     <div className={styles.pontuacao}>
@@ -93,7 +73,21 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                     </div>
 
                     <div className={styles.jogo}>
-                
+                        <div className={styles.tabuLinha}>
+                            <div className={styles.casa} data-pos='00' onClick="">{jogo[0][0]}</div>
+                            <div className={styles.casa} data-pos='01' onClick="">{jogo[0][1]}</div>
+                            <div className={styles.casa} data-pos='02' onClick="">{jogo[0][2]}</div>
+                        </div>
+                        <div className={styles.tabuLinha}>
+                            <div className={styles.casa} data-pos='10' onClick="">{jogo[1][0]}</div>
+                            <div className={styles.casa} data-pos='11' onClick="">{jogo[1][1]}</div>
+                            <div className={styles.casa} data-pos='12' onClick="">{jogo[1][2]}</div>
+                        </div>
+                        <div className={styles.tabuLinha}>
+                            <div className={styles.casa} data-pos='20' onClick="">{jogo[2][0]}</div>
+                            <div className={styles.casa} data-pos='21' onClick="">{jogo[2][1]}</div>
+                            <div className={styles.casa} data-pos='22' onClick="">{jogo[2][2]}</div>
+                        </div>
                     </div>
 
                     <div className={styles.pontuacao}>
