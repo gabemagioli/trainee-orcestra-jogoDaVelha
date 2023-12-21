@@ -15,7 +15,7 @@ export const PaginaInicial:React.FC = () => {
 
     const recebeNomeO = (e:any):string => {//funcao que recebe o nome do jogador O
         setJogadorO(e.target.value);
-        localStorage.setItem("JogadorO", jogadorO);//salva localmente as informacoes na maquina
+        localStorage.setItem("jogadorO", jogadorO);//salva localmente as informacoes na maquina
         console.log(e.target.value);
         return e.target.value;
     }

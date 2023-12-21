@@ -39,19 +39,20 @@
 .jogo{
     background-image: url("https://weart.com.br/media/productcustom/_DSC0006_1__1.png");
     background-size: cover;
-    margin-left:300px;
-    margin-right:300px;
+    margin-left:190px;
+    margin-right:200px;
     width:500px;
     height:500px;
 }
 
 .pontuacao{
     margin-left: 50px;
+    margin-right:50px;
     margin-top: 50px;
-    width: 80px;
+    width: 180px;
     background: linear-gradient(rgb(221, 61, 154) , rgb(190, 61, 167));
     border: solid rgb(247, 186, 238);;
-    height: 230px;
+    height: 70px;
     padding: 30px;
     border-radius: 6%;
 }

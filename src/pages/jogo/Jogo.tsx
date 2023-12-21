@@ -1,9 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './jogo.module.css';
 
-function Jogo(){
+function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     
-    const navigate = useNavigate();
+    const navigate = useNavigate();//navegacao entre as paginas do projeto
+
+    const jogadorX:string|null = localStorage.getItem("jogadorX");//variavel que armazena o nome do jogador x, tipo string ou nula caso nao haja valor para preencher
+    const jogadorO:string|null = localStorage.getItem("jogadorO");
 
     return(
         <>
@@ -15,7 +18,7 @@ function Jogo(){
                 <div className={styles.placar}>
                     <div className={styles.pontuacao}>
                         <div className={styles.jogador}>
-                            <p>X</p>
+                            <p>{jogadorX} - X</p>
                         </div>
                     </div>
 
@@ -25,7 +28,7 @@ function Jogo(){
 
                     <div className={styles.pontuacao}>
                         <div className={styles.jogador}>
-                            <p>O</p>
+                            <p>{jogadorO} - O</p>
                         </div>
                     </div>
                 </div>
