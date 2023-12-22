@@ -102,30 +102,27 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
             return false
         }
     }
-   
 
-    const jogar = (e:any) => {
-        if(jogando){
-            if(verificaEspacoVazio(e)){
-                jogo[retPos(e)[0]][retPos(e)[1]] = simboloAtual;
-                trocaJogador();
-                if(verificaVitoria()){
-                    trocaJogador();
-                    alert("Jogador" + simboloAtual + "venceu");
-                    ganhaPonto(simboloAtual);
-                    setJogando(false);
-                }
-                else{
-                    alert("Esse espaco ja esta ocupado, escolha uma posicao vazia");
-                }
+    const jogar = (e: any) => {
+        if (jogando) {
+          if (verificaEspacoVazio(e)) {
+            jogo[retPos(e)[0]][retPos(e)[1]] = simboloAtual;
+            trocaJogador();
+            if (verificaVitoria()) {
+              alert(`Jogador ${simboloAtual} venceu!`);
+              ganhaPonto(simboloAtual);
+              setJogando(false);
             }
+          } else {
+            alert("Este espaço já está ocupado. Escolha uma posição vazia.");
+          }
         }
-    }
+      };
 
     const reiniciarJogo = () => {
         setJogando(true);
         setJogo(jogoInicial);
-        setSimboloAtual("x");
+        setSimboloAtual('X');
     }
 
     return(

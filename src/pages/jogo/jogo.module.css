@@ -29,7 +29,7 @@
     height: 50px;
     border: solid rgb(196, 184, 194);
     margin-left: 720px;
-    margin-top: 30px;
+    margin-top: -20px;
 }
 
 .vezJogador{
@@ -74,11 +74,6 @@
     flex-direction:column;
 }
 
-
-
-
-
-/* tabuleiro */
 .tabu{
     display: flex;
     flex-direction: column;
@@ -98,5 +93,5 @@
     flex-direction: row;
     cursor: pointer;
     font-size: 60px;
-    border: 3px solid #000
+    border: 1px solid #000
 }
