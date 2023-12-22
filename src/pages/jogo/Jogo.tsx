@@ -98,7 +98,17 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
             return false
         }
     }
-   
+
+    const verificaEmpate = (): boolean => {
+      for (let l = 0; l < 3; l++) {
+        for (let c = 0; c < 3; c++) {
+          if (jogo[l][c] === ' ') {
+            return false;
+          }
+        }
+      }
+      return true;
+    };
 
     const jogar = (e:any) => {
         if(jogando){
@@ -111,6 +121,9 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                     alert("Jogador " + simboloAtual + " venceu");
                     ganhaPonto(simboloAtual);
                     setJogando(false);
+                } else if (verificaEmpate()) {
+                  setJogando(false);
+                  alert("O jogo terminou em empate!");
                 }
             }
         }
@@ -137,6 +150,8 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         setJogando(true);
         setJogo(jogoInicial);
         setSimboloAtual("X");
+        setPontosX(0);
+        setPontosO(0);
     }
 
     return(
