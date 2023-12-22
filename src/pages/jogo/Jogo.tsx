@@ -36,7 +36,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
           let pontos = 0;
           for (let c = 0; c < 3; c++) {
             if (jogo[l][c] === simboloAtual) {
-              pontos++
+              pontos++;
             }
           }
           if (pontos >= 3) {
@@ -58,17 +58,17 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         }
       
         // Diagonais
-        let pontosDiagonalPrincipal:number = 0
-        let pontosDiagonalSecundaria:number = 0
+        let pontosDiagonalPrincipal:number = 0;
+        let pontosDiagonalSecundaria:number = 0;
       
         for (let d = 0; d < 3; d++) {
           if (jogo[d][d] === simboloAtual) {
-            pontosDiagonalPrincipal++
+            pontosDiagonalPrincipal++;
           }
-    
-          const cSecundaria = 2 - d
+      
+          const cSecundaria = 2 - d;
           if (jogo[d][cSecundaria] === simboloAtual) {
-            pontosDiagonalSecundaria++
+            pontosDiagonalSecundaria++;
           }
         }
       
@@ -77,11 +77,11 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         }
       
         return false;
-      }
+      };
       
 
     const trocaJogador=()=>{
-        simboloAtual == 'X' ? setSimboloAtual('O') : setSimboloAtual('X')
+        simboloAtual == 'X' ? setSimboloAtual('O') : setSimboloAtual('X');
     }
 
     const retPos=(e:any)=>{
@@ -97,27 +97,39 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
             return false
         }
     }
+   
 
-    const jogar = (e: any) => {
-        if (jogando) {
-          if (verificaEspacoVazio(e)) {
-            jogo[retPos(e)[0]][retPos(e)[1]] = simboloAtual;
-            trocaJogador();
-            if (verificaVitoria()) {
-              alert(`Jogador ${simboloAtual} venceu!`);
-              ganhaPonto(simboloAtual);
-              setJogando(false);
+    const jogar = (e:any) => {
+        if(jogando){
+            if(verificaEspacoVazio(e)){
+                console.log("preencheu quadrado do tabuleiro!");
+                jogo[retPos(e)[0]][retPos(e)[1]] = simboloAtual;
+                trocaJogador();
+                if(verificaVitoria()){
+                    trocaJogador();
+                    alert("Jogador " + simboloAtual + " venceu");
+                    ganhaPonto(simboloAtual);
+                    setJogando(false);
+                }
             }
-          } else {
-            alert("Este espaço já está ocupado. Escolha uma posição vazia.");
-          }
         }
-      }
+        else{
+            alert("Esse espaco ja esta ocupado, escolha uma posicao vazia");
+        }
+    }
 
     const reiniciarJogo = () => {
         setJogando(true);
         setJogo(jogoInicial);
-        setSimboloAtual('X');
+        setSimboloAtual("X");
+        if(pontosO >= 3){
+            alert("O jogador O venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
+            setPontosO(0);
+        }
+        else if(pontosX >= 3){
+            alert("O jogador X venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
+            setPontosX(0);
+        }
     }
 
     return(
