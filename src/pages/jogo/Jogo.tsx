@@ -138,7 +138,6 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
             alert("O jogador X venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
             setPontosX(0);
         }
-        navigate("/");//talvez remover caso nao esteja redirecionando
     }
 
     return(
