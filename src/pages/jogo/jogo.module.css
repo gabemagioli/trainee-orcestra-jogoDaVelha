@@ -3,6 +3,8 @@
     height: 770px;
     margin-left: -8px;
     margin-right: -8px;
+    margin-bottom:-10px;
+    padding-bottom:50px;
 }
 
 .botoes{
@@ -29,7 +31,6 @@
     height: 50px;
     border: solid rgb(196, 184, 194);
     margin-left: 720px;
-    margin-top: 30px;
 }
 
 .vezJogador{
@@ -46,6 +47,7 @@
 .jogo{
     /* background-image: url("https://weart.com.br/media/productcustom/_DSC0006_1__1.png"); */
     background-size: cover;
+    margin-top:40px;
     margin-left:190px;
     margin-right:200px;
     width:500px;
@@ -79,11 +81,10 @@
 
 
 /* tabuleiro */
-.tabu{
-    display: flex;
-    flex-direction: column;
+.tabuleiro{
+    margin-left:50px;
+    margin-top:60px;
 }
-
 .tabuLinha{
     display: flex;
     flex-direction: row;

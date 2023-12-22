@@ -26,67 +26,62 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     }
 
     const jogoInicial:string[][] = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]];    
-    const [jogo, setJogo] = useState<string[][]>([['', '', ''], ['', '', ''], ['', '', '']])
+    const [jogo, setJogo] = useState<string[][]>([[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']])
     const [simboloAtual, setSimboloAtual]=useState<string>('X')
     const [jogando,setJogando]=useState<boolean>(true)
 
-    const verificaVitoria=()=>{
-        //linhas
-        let pontos:number =0
-        let vitoria: boolean =false
-        for(let l=0;l<3;l++){
-            pontos=0;
-            for(let c=0;c<3;c++){
-                if(jogo[l][c]==simboloAtual){
-                    pontos++
-                }
+    const verificaVitoria = () => {
+        // Linhas
+        for (let l = 0; l < 3; l++) {
+          let pontos = 0;
+          for (let c = 0; c < 3; c++) {
+            if (jogo[l][c] === simboloAtual) {
+              pontos++;
             }
-            if(pontos>=3){
-                vitoria=true
-                break
-            }
+          }
+          if (pontos >= 3) {
+            return true;
+          }
         }
-
-        //colunas
-        for(let c=0;c<3;c++){
-            pontos=0
-            for(let l=0;l<3;l++){
-                if(jogo[l][c]==simboloAtual){
-                    pontos++
-                }
+      
+        // Colunas
+        for (let c = 0; c < 3; c++) {
+          let pontos = 0;
+          for (let l = 0; l < 3; l++) {
+            if (jogo[l][c] === simboloAtual) {
+              pontos++;
             }
-            if(pontos>=3){
-                vitoria=true
-                break
-            }
+          }
+          if (pontos >= 3) {
+            return true;
+          }
         }
-
-        //diagonais
-        pontos=0
-        for(let d=0;d<3;d++){
-            if(jogo[d][d]){
-                pontos++
-            }
+      
+        // Diagonais
+        let pontosDiagonalPrincipal = 0;
+        let pontosDiagonalSecundaria = 0;
+      
+        for (let d = 0; d < 3; d++) {
+          if (jogo[d][d] === simboloAtual) {
+            pontosDiagonalPrincipal++;
+          }
+      
+          const cSecundaria = 2 - d;
+          if (jogo[d][cSecundaria] === simboloAtual) {
+            pontosDiagonalSecundaria++;
+          }
         }
-        if(pontos>=3){
-            vitoria=true;
-        }   
-        pontos=0
-        let l:number =0
-        for(let c=2;c>=0;c--){
-            if(jogo[l][c]==simboloAtual){
-                pontos++
-            }
-            l++
+      
+        if (pontosDiagonalPrincipal >= 3 || pontosDiagonalSecundaria >= 3) {
+          return true;
         }
-        if(pontos>=3){
-            vitoria=true
-        }
-        return vitoria
-    }
+      
+        return false;
+      };
+      
 
     const trocaJogador=()=>{
-        simboloAtual=='X'?setSimboloAtual('O'):setSimboloAtual('X')
+        simboloAtual == 'X' ? setSimboloAtual('O') : setSimboloAtual('X');
     }
 
     const retPos=(e:any)=>{
@@ -96,7 +91,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     }
 
     const verificaEspacoVazio=(e:any)=>{
-        if(jogo[retPos(e)[0]][retPos(e)[1]]==''){
+        if(jogo[retPos(e)[0]][retPos(e)[1]]==' '){
             return true
         }else{
             return false
@@ -107,25 +102,34 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     const jogar = (e:any) => {
         if(jogando){
             if(verificaEspacoVazio(e)){
+                console.log("preencheu quadrado do tabuleiro!");
                 jogo[retPos(e)[0]][retPos(e)[1]] = simboloAtual;
                 trocaJogador();
                 if(verificaVitoria()){
                     trocaJogador();
-                    alert("Jogador" + simboloAtual + "venceu");
+                    alert("Jogador " + simboloAtual + " venceu");
                     ganhaPonto(simboloAtual);
                     setJogando(false);
                 }
-                else{
-                    alert("Esse espaco ja esta ocupado, escolha uma posicao vazia");
-                }
             }
+        }
+        else{
+            alert("Esse espaco ja esta ocupado, escolha uma posicao vazia");
         }
     }
 
     const reiniciarJogo = () => {
         setJogando(true);
         setJogo(jogoInicial);
-        setSimboloAtual("x");
+        setSimboloAtual("X");
+        if(pontosO >= 3){
+            alert("O jogador O venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
+            setPontosO(0);
+        }
+        else if(pontosX >= 3){
+            alert("O jogador X venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
+            setPontosX(0);
+        }
     }
 
     return(
@@ -146,20 +150,22 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                     </div>
 
                     <div className={styles.jogo}>
-                        <div className={styles.tabuLinha}>
-                            <div className={styles.casa} data-pos='00' onClick={(e) => jogar(e)}>{jogo[0][0]}</div>
-                            <div className={styles.casa} data-pos='01' onClick={(e) => jogar(e)}>{jogo[0][1]}</div>
-                            <div className={styles.casa} data-pos='02' onClick={(e) => jogar(e)}>{jogo[0][2]}</div>
-                        </div>
-                        <div className={styles.tabuLinha}>
-                            <div className={styles.casa} data-pos='10' onClick={(e) => jogar(e)}>{jogo[1][0]}</div>
-                            <div className={styles.casa} data-pos='11' onClick={(e) => jogar(e)}>{jogo[1][1]}</div>
-                            <div className={styles.casa} data-pos='12' onClick={(e) => jogar(e)}>{jogo[1][2]}</div>
-                        </div>
-                        <div className={styles.tabuLinha}>
-                            <div className={styles.casa} data-pos='20' onClick={(e) => jogar(e)}>{jogo[2][0]}</div>
-                            <div className={styles.casa} data-pos='21' onClick={(e) => jogar(e)}>{jogo[2][1]}</div>
-                            <div className={styles.casa} data-pos='22' onClick={(e) => jogar(e)}>{jogo[2][2]}</div>
+                        <div className={styles.tabuleiro}>
+                            <div className={styles.tabuLinha}>
+                                <div className={styles.casa} data-pos='00' onClick={(e) => jogar(e)}>{jogo[0][0]}</div>
+                                <div className={styles.casa} data-pos='01' onClick={(e) => jogar(e)}>{jogo[0][1]}</div>
+                                <div className={styles.casa} data-pos='02' onClick={(e) => jogar(e)}>{jogo[0][2]}</div>
+                            </div>
+                            <div className={styles.tabuLinha}>
+                                <div className={styles.casa} data-pos='10' onClick={(e) => jogar(e)}>{jogo[1][0]}</div>
+                                <div className={styles.casa} data-pos='11' onClick={(e) => jogar(e)}>{jogo[1][1]}</div>
+                                <div className={styles.casa} data-pos='12' onClick={(e) => jogar(e)}>{jogo[1][2]}</div>
+                            </div>
+                            <div className={styles.tabuLinha}>
+                                <div className={styles.casa} data-pos='20' onClick={(e) => jogar(e)}>{jogo[2][0]}</div>
+                                <div className={styles.casa} data-pos='21' onClick={(e) => jogar(e)}>{jogo[2][1]}</div>
+                                <div className={styles.casa} data-pos='22' onClick={(e) => jogar(e)}>{jogo[2][2]}</div>
+                            </div>
                         </div>
                     </div>
 
