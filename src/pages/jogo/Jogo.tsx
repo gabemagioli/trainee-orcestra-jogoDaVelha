@@ -120,24 +120,24 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         }
     }
 
-    const limparTabuleiro = ():any =>{
+    const limparTabuleiro = ():any =>{//funcao que remove as pecas do tabuleiro e mantem o progresso dos jogadores caso nenhum esteja com 3 pontos, nao tiar as pontuacoes
         setJogando(true);
         setJogo(jogoInicial);
         setSimboloAtual("X");
+        if(pontosO == 3){
+            alert("O jogador O venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
+            setPontosO(0);
+        }
+        if(pontosX == 3){
+            alert("O jogador X venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
+            setPontosX(0);
+        }
     }
 
     const reiniciarJogo = () => {
         setJogando(true);
         setJogo(jogoInicial);
         setSimboloAtual("X");
-        if(pontosO >= 3){
-            alert("O jogador O venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
-            setPontosO(0);
-        }
-        else if(pontosX >= 3){
-            alert("O jogador X venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
-            setPontosX(0);
-        }
     }
 
     return(
