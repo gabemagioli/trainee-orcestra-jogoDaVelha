@@ -75,7 +75,6 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         if (pontosDiagonalPrincipal >= 3 || pontosDiagonalSecundaria >= 3) {
             return true;
         }
-      
 
         return false;
 
@@ -185,8 +184,10 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                         </div>
                     </div>
                 </div>
-                <button className={styles.botaoReiniciar} onClick={() => reiniciarJogo()}>Reiniciar</button>
-                <button onClick={()=>limparTabuleiro()}>limpar tabuleiro</button>
+                <div className={styles.botoesDiv}>
+                  <button className={styles.botoesInferiores} onClick={() => reiniciarJogo()}>Reiniciar</button>
+                  <button className={styles.botoesInferiores}onClick={()=>limparTabuleiro()}>limpar tabuleiro</button>
+                </div>
             </section>
         </>
     )

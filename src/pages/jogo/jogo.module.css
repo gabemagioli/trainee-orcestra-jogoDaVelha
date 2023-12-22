@@ -1,17 +1,19 @@
 .main{
     background: linear-gradient(rgb(145, 144, 144) , rgb(80, 73, 58));
-    height: 770px;
+    height: 725px;
     margin-left: -8px;
     margin-right: -8px;
+    margin-top: -8px;
     margin-bottom:-10px;
     padding-bottom:50px;
 }
 
 .botoes{
-    padding: 50px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     height: 50px;
+    margin-left: 30px;
 }
 
 .botaoVoltar{
@@ -23,7 +25,12 @@
     border: solid rgb(107, 101, 106);
 }
 
-.botaoReiniciar{
+.botoesDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.botoesInferiores{
     border-radius: 10%;
     background-color: rgb(250, 65, 173);
     color: aliceblue;
