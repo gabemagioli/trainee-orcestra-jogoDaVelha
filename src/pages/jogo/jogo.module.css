@@ -37,7 +37,7 @@
 .vezJogador{
     display: flex;
     justify-content: center;
-    color: aliceblue;
+    color: rgb(200, 200, 200);
     font-size: 20px;
 }
 
