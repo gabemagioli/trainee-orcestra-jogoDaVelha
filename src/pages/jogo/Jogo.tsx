@@ -73,10 +73,12 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         }
       
         if (pontosDiagonalPrincipal >= 3 || pontosDiagonalSecundaria >= 3) {
-          return true;
+            return true;
         }
       
+
         return false;
+
       };
       
 
@@ -118,6 +120,12 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         }
     }
 
+    const limparTabuleiro = ():any =>{
+        setJogando(true);
+        setJogo(jogoInicial);
+        setSimboloAtual("X");
+    }
+
     const reiniciarJogo = () => {
         setJogando(true);
         setJogo(jogoInicial);
@@ -130,6 +138,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
             alert("O jogador X venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
             setPontosX(0);
         }
+        navigate("/");//talvez remover caso nao esteja redirecionando
     }
 
     return(
@@ -177,6 +186,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                     </div>
                 </div>
                 <button className={styles.botaoReiniciar} onClick={() => reiniciarJogo()}>Reiniciar</button>
+                <button onClick={()=>limparTabuleiro()}>limpar tabuleiro</button>
             </section>
         </>
     )
