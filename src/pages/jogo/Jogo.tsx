@@ -30,7 +30,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     const [simboloAtual, setSimboloAtual]=useState<string>('X')
     const [jogando,setJogando]=useState<boolean>(true)
 
-    const verificaVitoria = () => {
+    const verificaVitoria = ():boolean => {//funcao que retorna um booleano true caso haja um vencedor ou false cajo ainda nao tenha vencedor
         // Linhas
         for (let l = 0; l < 3; l++) {
           let pontos = 0;
@@ -46,7 +46,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
       
         // Colunas
         for (let c = 0; c < 3; c++) {
-          let pontos = 0;
+          let pontos:number = 0;
           for (let l = 0; l < 3; l++) {
             if (jogo[l][c] === simboloAtual) {
               pontos++;
@@ -58,8 +58,8 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         }
       
         // Diagonais
-        let pontosDiagonalPrincipal = 0;
-        let pontosDiagonalSecundaria = 0;
+        let pontosDiagonalPrincipal:number = 0;
+        let pontosDiagonalSecundaria:number = 0;
       
         for (let d = 0; d < 3; d++) {
           if (jogo[d][d] === simboloAtual) {
