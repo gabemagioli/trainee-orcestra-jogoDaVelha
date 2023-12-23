@@ -13,19 +13,17 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     const[pontosO, setPontosO] = useState<number>(0);
 
     const ganhaPonto = (jogador:string):number | string => {//funcao que eh responsavel por incrementar pontos -> recebe 'x' ou 'o' como parametro e a partir disso adiciona os pontos ao jogador certo (funcao funcionando apenas alocar ela quando implementar o jogo da velha)
-        if(jogador == 'x' || jogador == 'X'){
+        if (jogador === 'x' || jogador === 'X') {
             setPontosX((pontosX) => pontosX + 1);
-            return pontosX;
-        }
-        else if(jogador == 'o' || jogador == 'O'){
-            console.log("entrou na funcao")
+            localStorage.setItem("pontoX", pontosX.toString()); // Update localStorage here
+            return pontosX + 1;
+          } else if (jogador === 'o' || jogador === 'O') {
             setPontosO((pontosO) => pontosO + 1);
-            return pontosO;
-            localStorage.setItem("pontosX", pontosX.toString());
-            localStorage.setItem("pontosO", pontosO.toString());
+            localStorage.setItem("pontosO", pontosO.toString()); // Update localStorage here
+            return pontosO + 1;
+          }
+          return "Erro na funcao nao entrou em nenhuma das 2 condicionais - um parametro foi passado errado";
         }
-        return "Erro na funcao nao entrou em nenhuma das 2 condicionais - um parametro foi passado errado";//caso nao entrar em nenhuma das condicionais retorna mensagem de erro
-    }
 
     const jogoInicial:string[][] = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]];    
     const [jogo, setJogo] = useState<string[][]>([[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']])

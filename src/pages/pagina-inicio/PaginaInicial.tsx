@@ -11,7 +11,7 @@ export const PaginaInicial:React.FC = () => {
         localStorage.setItem("jogadorX", jogadorX);//salva localmente as informacoes na maquina
         console.log(e.target.value);
         return e.target.value;
-      };
+      }
 
     const recebeNomeO = (e:any):string => {//funcao que recebe o nome do jogador O
         setJogadorO(e.target.value);
@@ -30,11 +30,11 @@ export const PaginaInicial:React.FC = () => {
                 <form className={styles.nomes}>
                     <div className={styles.infoJogador}>
                         <label htmlFor="jogadorX" className={styles.labelNomes}>Nome do jogador X</label>
-                        <input id={styles.jogadorX} type="text" placeholder="nome do jogador X" value={jogadorX} onChange={(e) => recebeNomeX(e)}/>
+                        <input id={styles.jogadorX} type="text" placeholder="nome do jogador X" value={jogadorX}onChange={(e) => recebeNomeX(e)}/>
                     </div>
                     <div className={styles.infoJogador}>
                         <label htmlFor="jogadorO" className={styles.labelNomes}>Nome do jogador O</label>
-                        <input id={styles.jogadorO} type="text" placeholder="nome do jogador O" value={jogadorO} onChange={(e) => recebeNomeO(e)}/>
+                        <input id={styles.jogadorO} type="text" placeholder="nome do jogador O" value={jogadorO} required onChange={(e) => recebeNomeO(e)}/>
                     </div>
                     <button className={styles.prosseguirBotao} onClick={() => navigate("/jogo")}>Prosseguir</button>
                 </form>
