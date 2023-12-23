@@ -143,10 +143,12 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         if(pontosO == 3){
             alert("O jogador O venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
             setPontosO(0);
+            localStorage.setItem("pontosO", "0");
         }
         if(pontosX == 3){
             alert("O jogador X venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
             setPontosX(0);
+            localStorage.setItem("pontosX", "0");
         }
     }
 
