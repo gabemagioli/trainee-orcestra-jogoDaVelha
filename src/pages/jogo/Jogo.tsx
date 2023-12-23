@@ -15,11 +15,11 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     const ganhaPonto = (jogador:string):number | string => {//funcao que eh responsavel por incrementar pontos -> recebe 'x' ou 'o' como parametro e a partir disso adiciona os pontos ao jogador certo (funcao funcionando apenas alocar ela quando implementar o jogo da velha)
         if (jogador === 'x' || jogador === 'X') {
             setPontosX((pontosX) => pontosX + 1);
-            localStorage.setItem("pontoX", pontosX.toString()); // Update localStorage here
+            localStorage.setItem("pontosX", (pontosX + 1).toString()); // Update localStorage here
             return pontosX + 1;
           } else if (jogador === 'o' || jogador === 'O') {
             setPontosO((pontosO) => pontosO + 1);
-            localStorage.setItem("pontosO", pontosO.toString()); // Update localStorage here
+            localStorage.setItem("pontosO", (pontosO + 1).toString()); // Update localStorage here
             return pontosO + 1;
           }
           return "Erro na funcao nao entrou em nenhuma das 2 condicionais - um parametro foi passado errado";
@@ -152,6 +152,8 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         setSimboloAtual("X");
         setPontosX(0);
         setPontosO(0);
+        localStorage.setItem("pontosO", pontosO.toString());
+        localStorage.setItem("pontosX", pontosX.toString());
     }
 
     return(
@@ -167,7 +169,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                     <div className={styles.pontuacao}>
                         <div className={styles.jogador}>
                             <h3>{jogadorX} - X</h3>
-                            <p>pontos: {pontosX}</p>
+                            <p>pontos: {localStorage.getItem("pontosX")}</p>
                         </div>
                     </div>
 
@@ -194,7 +196,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
                     <div className={styles.pontuacao}>
                         <div className={styles.jogador}>
                             <h3>{jogadorO} - O</h3>
-                            <p>pontos: {pontosO}</p>
+                            <p>pontos: {localStorage.getItem("pontosO")}</p>
                         </div>
                     </div>
                 </div>
