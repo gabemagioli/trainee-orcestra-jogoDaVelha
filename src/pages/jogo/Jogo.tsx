@@ -2,24 +2,30 @@ import { useNavigate } from 'react-router-dom';
 import styles from './jogo.module.css';
 import { useState } from 'react';
 
-function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
+//funcao que possui a tela principal -> jogo da velha(tabuleiro)
+function Jogo(){ 
     
-    const navigate = useNavigate();//navegacao entre as paginas do projeto
+  //navegacao entre as paginas do projeto
 
-    const jogadorX:string|null = localStorage.getItem("jogadorX");//variavel que armazena o nome do jogador x, tipo string ou nula caso nao haja valor para preencher
+    const navigate = useNavigate(); 
+
+    //variavel que armazena o nome do jogador x, tipo string ou nula caso nao haja valor para preencher
+    const jogadorX:string|null = localStorage.getItem("jogadorX");
     const jogadorO:string|null = localStorage.getItem("jogadorO");
 
-    const[pontosX, setPontosX] = useState<number>(0);//variavel recebe apenas valores numericos
+    //variavel recebe apenas valores numericos
+    const[pontosX, setPontosX] = useState<number>(0);
     const[pontosO, setPontosO] = useState<number>(0);
 
-    const ganhaPonto = (jogador:string):number | string => {//funcao que eh responsavel por incrementar pontos -> recebe 'x' ou 'o' como parametro e a partir disso adiciona os pontos ao jogador certo (funcao funcionando apenas alocar ela quando implementar o jogo da velha)
-        if (jogador === 'x' || jogador === 'X') {
+    //funcao que é responsavel por incrementar pontos -> recebe 'x' ou 'o' como parametro e a partir disso adiciona os pontos ao jogador certo (funcao funcionando apenas alocar ela quando implementar o jogo da velha)
+    if (jogador === 'x' || jogador === 'X') {
+    const ganhaPonto = (jogador:string):number | string => {
             setPontosX((pontosX) => pontosX + 1);
-            localStorage.setItem("pontosX", (pontosX + 1).toString()); // Update localStorage here
+            localStorage.setItem("pontosX", (pontosX + 1).toString()); 
             return pontosX + 1;
           } else if (jogador === 'o' || jogador === 'O') {
             setPontosO((pontosO) => pontosO + 1);
-            localStorage.setItem("pontosO", (pontosO + 1).toString()); // Update localStorage here
+            localStorage.setItem("pontosO", (pontosO + 1).toString());
             return pontosO + 1;
           }
           return "Erro na funcao nao entrou em nenhuma das 2 condicionais - um parametro foi passado errado";
@@ -30,7 +36,9 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     const [simboloAtual, setSimboloAtual]=useState<string>('X')
     const [jogando,setJogando]=useState<boolean>(true)
 
-    const verificaVitoria = ():boolean => {//funcao que retorna um booleano true caso haja um vencedor ou false cajo ainda nao tenha vencedor
+    //funcao que retorna um booleano true caso haja um vencedor ou false cajo ainda nao tenha vencedor
+    const verificaVitoria = ():boolean => {
+
         // Linhas
         for (let l = 0; l < 3; l++) {
           let pontos = 0;
@@ -79,12 +87,12 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         return false;
 
       };
-      
 
     const trocaJogador=()=>{
         simboloAtual == 'X' ? setSimboloAtual('O') : setSimboloAtual('X');
     }
-
+  
+    // Função para obter posição a partir do evento
     const retPos=(e:any)=>{
         const p=e.target.getAttribute('data-pos')
         const pos:number[]=[parseInt(p.substring(0,1)), parseInt(p.substring(1,2))]
@@ -110,6 +118,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
       return true;
     };
 
+    // Função para realizar uma jogada
     const jogar = (e:any) => {
         if(jogando){
             if(verificaEspacoVazio(e)){
@@ -151,14 +160,12 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
       setJogando(true);
       setJogo(jogoInicial);
       setSimboloAtual("X");
-  
-      // Use a função de retorno para obter os valores atualizados
+
       setPontosX((pontosX) => {
           localStorage.setItem("pontosX", "0");
           return 0;
       });
   
-      // Use a função de retorno para obter os valores atualizados
       setPontosO((pontosO) => {
           localStorage.setItem("pontosO", "0");
           return 0;
