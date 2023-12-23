@@ -18,18 +18,19 @@ function Jogo(){
     const[pontosO, setPontosO] = useState<number>(0);
 
     //funcao que é responsavel por incrementar pontos -> recebe 'x' ou 'o' como parametro e a partir disso adiciona os pontos ao jogador certo (funcao funcionando apenas alocar ela quando implementar o jogo da velha)
-    if (jogador === 'x' || jogador === 'X') {
-    const ganhaPonto = (jogador:string):number | string => {
-            setPontosX((pontosX) => pontosX + 1);
-            localStorage.setItem("pontosX", (pontosX + 1).toString()); 
-            return pontosX + 1;
-          } else if (jogador === 'o' || jogador === 'O') {
-            setPontosO((pontosO) => pontosO + 1);
-            localStorage.setItem("pontosO", (pontosO + 1).toString());
-            return pontosO + 1;
-          }
-          return "Erro na funcao nao entrou em nenhuma das 2 condicionais - um parametro foi passado errado";
-        }
+    const ganhaPonto = (jogador: string): number | string => {
+      if (jogador === 'x' || jogador === 'X') {
+          setPontosX((pontosX) => pontosX + 1);
+          localStorage.setItem("pontosX", (pontosX + 1).toString());
+          return pontosX + 1;
+      } else if (jogador === 'o' || jogador === 'O') {
+          setPontosO((pontosO) => pontosO + 1);
+          localStorage.setItem("pontosO", (pontosO + 1).toString());
+          return pontosO + 1;
+      }
+      return "Erro na função: nenhum dos casos condicionais foi satisfeito - um parâmetro foi passado de forma incorreta";
+  };
+  
 
     const jogoInicial:string[][] = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]];    
     const [jogo, setJogo] = useState<string[][]>([[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']])
