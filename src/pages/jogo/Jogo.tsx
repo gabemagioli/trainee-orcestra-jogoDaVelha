@@ -153,6 +153,8 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
         setSimboloAtual("X");
         setPontosX(0);
         setPontosO(0);
+        localStorage.setItem("jogadorX", "");
+        localStorage.setItem("jogadorO", "");
         localStorage.setItem("pontosO", pontosO.toString());
         localStorage.setItem("pontosX", pontosX.toString());
     }
