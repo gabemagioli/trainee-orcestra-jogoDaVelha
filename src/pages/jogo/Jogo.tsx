@@ -3,10 +3,9 @@ import styles from './jogo.module.css';
 import { useState } from 'react';
 
 //funcao que possui a tela principal -> jogo da velha(tabuleiro)
-function Jogo(){ 
+const Jogo: React.FC = () => { 
     
   //navegacao entre as paginas do projeto
-
     const navigate = useNavigate(); 
 
     //variavel que armazena o nome do jogador x, tipo string ou nula caso nao haja valor para preencher
@@ -127,14 +126,19 @@ function Jogo(){
                 jogo[retPos(e)[0]][retPos(e)[1]] = simboloAtual;
                 localStorage.setItem("pecas", jogo.toString());//funcionando -> para puxar do tabuleiro precisa colocar localStorage.getItem("pecas"); - precisa so achar onde colocar. lembrar tambem de colocar para reiniciar o tabuleiro no metodo reiniciar.
                 trocaJogador();
+
                 if(verificaVitoria()){
                     trocaJogador();
+                    setTimeout(() => {
                     alert("Jogador " + simboloAtual + " venceu");
                     ganhaPonto(simboloAtual);
                     setJogando(false);
+                }, 0)
                 } else if (verificaEmpate()) {
+                  setTimeout(() => {
                   setJogando(false);
                   alert("O jogo terminou em empate!");
+                  }, 0)
                 }
             }
         }
@@ -143,7 +147,8 @@ function Jogo(){
         }
     }
 
-    const limparTabuleiro = ():any =>{//funcao que remove as pecas do tabuleiro e mantem o progresso dos jogadores caso nenhum esteja com 3 pontos, nao tira as pontuacoes
+    //funcao que remove as pecas do tabuleiro e mantem o progresso dos jogadores caso nenhum esteja com 3 pontos, nao tira as pontuacoes
+    const limparTabuleiro = ():any =>{
         setJogando(true);
         setJogo(jogoInicial);
         setSimboloAtual("X");
@@ -151,11 +156,13 @@ function Jogo(){
             alert("O jogador O venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
             setPontosO(0);
             localStorage.setItem("pontosO", "0");
+            localStorage.setItem("pontosX", "0");
         }
         if(pontosX == 3){
             alert("O jogador X venceu a rodada melhor de 3, voce ira deixar ele ser melhor mesmo?");
             setPontosX(0);
             localStorage.setItem("pontosX", "0");
+            localStorage.setItem("pontosO", "0");
         }
     }
 
@@ -163,59 +170,97 @@ function Jogo(){
       setJogando(true);
       setJogo(jogoInicial);
       setSimboloAtual("X");
+
+      localStorage.setItem("pontosX", "0");
+      localStorage.setItem("pontosO", "0");
+      setPontosX(0);
+      setPontosO(0);
   }
 
-    return(
-        <>
-            <section className={styles.main}>
-                <div className={styles.botoes}>
-                    <button className={styles.botaoVoltar} onClick={()=> navigate("/")}>Voltar</button>
-                </div>
+  return (
+    <>
+        <section className={styles.main}>
+            <div className={styles.botoes}>
+                <button className={styles.botaoVoltar} onClick={() => navigate("/")}>
+                    Voltar
+                </button>
+            </div>
 
-                <h1 className={styles.vezJogador}><img src="https://cdn-icons-png.flaticon.com/512/10791/10791552.png" className={styles.engrenagem} /> Vez do jogador: {simboloAtual} <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/cog-settings-512.png" className={styles.engrenagem}/></h1>
+            <h1 className={styles.vezJogador}>Vez do jogador: {simboloAtual}</h1>
 
-                <div className={styles.placar}>
-                    <div className={styles.pontuacao}>
-                        <div className={styles.jogador}>
-                            <h3>{jogadorX} - X</h3>
-                            <p>pontos: {localStorage.getItem("pontosX")}</p>
-                        </div>
-                    </div>
-
-                    <div className={styles.jogo}>
-                        <div className={styles.tabuleiro}>
-                            <div className={styles.tabuLinha}>
-                                <div className={styles.casa} data-pos='00' onClick={(e) => jogar(e)}>{jogo[0][0]}</div>
-                                <div className={styles.casa} data-pos='01' onClick={(e) => jogar(e)}>{jogo[0][1]}</div>
-                                <div className={styles.casa} data-pos='02' onClick={(e) => jogar(e)}>{jogo[0][2]}</div>
-                            </div>
-                            <div className={styles.tabuLinha}>
-                                <div className={styles.casa} data-pos='10' onClick={(e) => jogar(e)}>{jogo[1][0]}</div>
-                                <div className={styles.casa} data-pos='11' onClick={(e) => jogar(e)}>{jogo[1][1]}</div>
-                                <div className={styles.casa} data-pos='12' onClick={(e) => jogar(e)}>{jogo[1][2]}</div>
-                            </div>
-                            <div className={styles.tabuLinha}>
-                                <div className={styles.casa} data-pos='20' onClick={(e) => jogar(e)}>{jogo[2][0]}</div>
-                                <div className={styles.casa} data-pos='21' onClick={(e) => jogar(e)}>{jogo[2][1]}</div>
-                                <div className={styles.casa} data-pos='22' onClick={(e) => jogar(e)}>{jogo[2][2]}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={styles.pontuacao}>
-                        <div className={styles.jogador}>
-                            <h3>{jogadorO} - O</h3>
-                            <p>pontos: {localStorage.getItem("pontosO")}</p>
-                        </div>
+            <div className={styles.placar}>
+                <div className={styles.pontuacao}>
+                    <div className={styles.jogador}>
+                        <h3>{jogadorX} - X</h3>
+                        <p>pontos: {localStorage.getItem("pontosX")}</p>
                     </div>
                 </div>
-                <div className={styles.botoesDiv}>
-                  <button className={styles.botoesInferiores} onClick={() => reiniciarJogo()}>Reiniciar</button>
-                  <button className={styles.botoesInferiores}onClick={()=>limparTabuleiro()}>limpar tabuleiro</button>
+
+                <div className={styles.jogo}>
+                    <div className={styles.tabuleiro}>
+                        <div className={styles.tabuLinha}>
+                            <div className={styles.casa} data-pos='00' onClick={(e) => jogar(e)}>
+                                {jogo[0][0] === 'X' && <img src="https://cdn-icons-png.flaticon.com/512/5557/5557647.png" alt="X" style={{ width: '50px', height: '50px', transform: 'rotate(45deg)' }}/>}
+                                {jogo[0][0] === 'O' && <img src="https://cdn-icons-png.flaticon.com/512/40/40031.png" alt="O" style={{ width: '50px', height: '50px' }}/>}
+                            </div>
+                            <div className={styles.casa} data-pos='01' onClick={(e) => jogar(e)}>
+                                {jogo[0][1] === 'X' && <img src="https://cdn-icons-png.flaticon.com/512/5557/5557647.png" alt="X" style={{ width: '50px', height: '50px', transform: 'rotate(45deg)' }}/>}
+                                {jogo[0][1] === 'O' && <img src="https://cdn-icons-png.flaticon.com/512/40/40031.png" alt="O" style={{ width: '50px', height: '50px' }}/>}
+                            </div>
+                            <div className={styles.casa} data-pos='02' onClick={(e) => jogar(e)}>
+                                {jogo[0][2] === 'X' && <img src="https://cdn-icons-png.flaticon.com/512/5557/5557647.png" alt="X" style={{ width: '50px', height: '50px', transform: 'rotate(45deg)' }}/>}
+                                {jogo[0][2] === 'O' && <img src="https://cdn-icons-png.flaticon.com/512/40/40031.png" alt="O" style={{ width: '50px', height: '50px' }}/>}
+                            </div>
+                        </div>
+                        <div className={styles.tabuLinha}>
+                            <div className={styles.casa} data-pos='10' onClick={(e) => jogar(e)}>
+                                {jogo[1][0] === 'X' && <img src="https://cdn-icons-png.flaticon.com/512/5557/5557647.png" alt="X" style={{ width: '50px', height: '50px', transform: 'rotate(45deg)' }}/>}
+                                {jogo[1][0] === 'O' && <img src="https://cdn-icons-png.flaticon.com/512/40/40031.png" alt="O" style={{ width: '50px', height: '50px' }}/>}
+                            </div>
+                            <div className={styles.casa} data-pos='11' onClick={(e) => jogar(e)}>
+                                {jogo[1][1] === 'X' && <img src="https://cdn-icons-png.flaticon.com/512/5557/5557647.png" alt="X" style={{ width: '50px', height: '50px', transform: 'rotate(45deg)' }}/>}
+                                {jogo[1][1] === 'O' && <img src="https://cdn-icons-png.flaticon.com/512/40/40031.png" alt="O" style={{ width: '50px', height: '50px' }}/>}
+                            </div>
+                            <div className={styles.casa} data-pos='12' onClick={(e) => jogar(e)}>
+                                {jogo[1][2] === 'X' && <img src="https://cdn-icons-png.flaticon.com/512/5557/5557647.png" alt="X" style={{ width: '50px', height: '50px', transform: 'rotate(45deg)' }}/>}
+                                {jogo[1][2] === 'O' && <img src="https://cdn-icons-png.flaticon.com/512/40/40031.png" alt="O" style={{ width: '50px', height: '50px' }}/>}
+                            </div>
+                        </div>
+                        <div className={styles.tabuLinha}>
+                          <div className={styles.casa} data-pos='20' onClick={(e) => jogar(e)}>
+                                {jogo[2][0] === 'X' && <img src="https://cdn-icons-png.flaticon.com/512/5557/5557647.png" alt="X" style={{ width: '50px', height: '50px', transform: 'rotate(45deg)' }} />}
+                                {jogo[2][0] === 'O' && <img src="https://cdn-icons-png.flaticon.com/512/40/40031.png" alt="O" style={{ width: '50px', height: '50px' }} />}
+                          </div>
+                          <div className={styles.casa} data-pos='21' onClick={(e) => jogar(e)}>
+                                {jogo[2][1] === 'X' && <img src="https://cdn-icons-png.flaticon.com/512/5557/5557647.png" alt="X" style={{ width: '50px', height: '50px', transform: 'rotate(45deg)' }} />}
+                                {jogo[2][1] === 'O' && <img src="https://cdn-icons-png.flaticon.com/512/40/40031.png" alt="O" style={{ width: '50px', height: '50px' }} />}
+                          </div>
+                          <div className={styles.casa} data-pos='22' onClick={(e) => jogar(e)}>
+                                {jogo[2][2] === 'X' && <img src="https://cdn-icons-png.flaticon.com/512/5557/5557647.png" alt="X" style={{ width: '50px', height: '50px', transform: 'rotate(45deg)' }} />}
+                                {jogo[2][2] === 'O' && <img src="https://cdn-icons-png.flaticon.com/512/40/40031.png" alt="O" style={{ width: '50px', height: '50px' }} />}
+                         </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
-        </>
-    )
-}
+
+                <div className={styles.pontuacao}>
+                    <div className={styles.jogador}>
+                        <h3>{jogadorO} - O</h3>
+                        <p>pontos: {localStorage.getItem("pontosO")}</p>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.botoesDiv}>
+                <button className={styles.botoesInferiores} onClick={() => reiniciarJogo()}>
+                    Reiniciar
+                </button>
+                <button className={styles.botoesInferiores} onClick={() => limparTabuleiro()}>
+                    Limpar Tabuleiro
+                </button>
+            </div>
+        </section>
+    </>
+);
+};
 
 export default Jogo;
