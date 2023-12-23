@@ -21,6 +21,8 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
             console.log("entrou na funcao")
             setPontosO((pontosO) => pontosO + 1);
             return pontosO;
+            localStorage.setItem("pontosX", pontosX.toString());
+            localStorage.setItem("pontosO", pontosO.toString());
         }
         return "Erro na funcao nao entrou em nenhuma das 2 condicionais - um parametro foi passado errado";//caso nao entrar em nenhuma das condicionais retorna mensagem de erro
     }
