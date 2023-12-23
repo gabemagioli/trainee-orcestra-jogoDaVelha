@@ -1,17 +1,17 @@
 .main{
     background: linear-gradient(rgb(145, 144, 144) , rgb(80, 73, 58));
-    height: 770px;
+    height: 725px;
     margin-left: -8px;
     margin-right: -8px;
+    margin-top: -8px;
     margin-bottom:-10px;
     padding-bottom:50px;
 }
 
 .botoes{
-    padding: 50px;
-    display: flex;
-    justify-content: space-between;
+    padding: 20px;
     height: 50px;
+    margin-left: 30px;
 }
 
 .botaoVoltar{
@@ -23,15 +23,22 @@
     border: solid rgb(107, 101, 106);
 }
 
-.botaoReiniciar{
+/* div que agrega os botoes reiniciar e limpar tabuleiro */
+.botoesDiv{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* botoes reiniciar e limpar tabuleiro */
+.botoesInferiores{
     border-radius: 10%;
     background-color: rgb(250, 65, 173);
     color: aliceblue;
     width: 70px;
     height: 50px;
     border: solid rgb(196, 184, 194);
-    margin-left: 720px;
-    margin-top: -20px;
+    margin-top: -40px;
 }
 
 .vezJogador{
@@ -77,13 +84,9 @@
     flex-direction:column;
 }
 
-
-
-
-
 /* tabuleiro */
 .tabuleiro{
-    margin-left:50px;
+    margin-left:90px;
     margin-top:60px;
 }
 .tabuLinha{
@@ -100,5 +103,5 @@
     flex-direction: row;
     cursor: pointer;
     font-size: 60px;
-    border: 1px solid #000
+    border: 1px solid white
 }
