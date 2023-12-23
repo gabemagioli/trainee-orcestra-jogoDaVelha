@@ -148,14 +148,22 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
     }
 
     const reiniciarJogo = () => {
-        setJogando(true);
-        setJogo(jogoInicial);
-        setSimboloAtual("X");
-        setPontosX(0);
-        setPontosO(0);
-        localStorage.setItem("pontosO", pontosO.toString());
-        localStorage.setItem("pontosX", pontosX.toString());
-    }
+      setJogando(true);
+      setJogo(jogoInicial);
+      setSimboloAtual("X");
+  
+      // Use a função de retorno para obter os valores atualizados
+      setPontosX((pontosX) => {
+          localStorage.setItem("pontosX", "0");
+          return 0;
+      });
+  
+      // Use a função de retorno para obter os valores atualizados
+      setPontosO((pontosO) => {
+          localStorage.setItem("pontosO", "0");
+          return 0;
+      });
+  }
 
     return(
         <>
