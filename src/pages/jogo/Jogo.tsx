@@ -139,7 +139,7 @@ function Jogo(){
             }
         }
         else{
-            alert("Esse espaco ja esta ocupado, escolha uma posicao vazia");
+            alert("Esse jogo já acabou, reinicie ou limpe o tabuleiro para jogar novamente!");
         }
     }
 

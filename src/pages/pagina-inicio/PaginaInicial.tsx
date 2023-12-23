@@ -3,21 +3,22 @@ import styles from './paginaInicial.module.css';
 import { useNavigate } from "react-router-dom";
 
 export const PaginaInicial:React.FC = () => {
-    const[jogadorX, setJogadorX] = useState<string>("");//variavel que recebe apenas valor em string(texto)
+    //variavel que recebe apenas valor em string(texto)
+    const[jogadorX, setJogadorX] = useState<string>("");
     const[jogadorO, setJogadorO]= useState<string>("");
 
-    const recebeNomeX = (e:any):string => {//funcao que recebe o nome do jogador X
-        setJogadorX(e.target.value);//encontra o valor do input
-        localStorage.setItem("jogadorX", jogadorX);//salva localmente as informacoes na maquina
-        console.log(e.target.value);
-        return e.target.value;
+    //funcao que recebe o nome do jogador X
+    const recebeNomeX = (e:any): void => {
+        const novoValor = e.target.value;
+        setJogadorX(novoValor); //encontra o valor do input
+        localStorage.setItem("jogadorX", novoValor); //salva localmente as informacoes na maquina
       }
 
-    const recebeNomeO = (e:any):string => {//funcao que recebe o nome do jogador O
-        setJogadorO(e.target.value);
-        localStorage.setItem("jogadorO", jogadorO);//salva localmente as informacoes na maquina
-        console.log(e.target.value);
-        return e.target.value;
+    //funcao que recebe o nome do jogador O
+    const recebeNomeO = (e:any): void => {
+        const novoValor = e.target.value;
+        setJogadorO(novoValor);
+        localStorage.setItem("jogadorO", novoValor); //salva localmente as informacoes na maquina
     }
 
     const navigate = useNavigate();
