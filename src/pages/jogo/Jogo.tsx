@@ -163,16 +163,6 @@ function Jogo(){
       setJogando(true);
       setJogo(jogoInicial);
       setSimboloAtual("X");
-
-      setPontosX((pontosX) => {
-          localStorage.setItem("pontosX", "0");
-          return 0;
-      });
-  
-      setPontosO((pontosO) => {
-          localStorage.setItem("pontosO", "0");
-          return 0;
-      });
   }
 
     return(
