@@ -44,8 +44,12 @@
 .vezJogador{
     display: flex;
     justify-content: center;
-    color: rgb(200, 200, 200);
-    font-size: 20px;
+    color: rgb(222, 222, 222);
+    font-size: 25px;
+    font-family: 'Rubik Doodle Shadow', sans-serif;
+}
+.engrenagem{
+    width:25px;
 }
 
 .placar{
