@@ -115,6 +115,7 @@ function Jogo(){//funcao que possui a tela principal -> jogo da velha(tabuleiro)
             if(verificaEspacoVazio(e)){
                 console.log("preencheu quadrado do tabuleiro!");
                 jogo[retPos(e)[0]][retPos(e)[1]] = simboloAtual;
+                localStorage.setItem("pecas", jogo.toString());//funcionando -> para puxar do tabuleiro precisa colocar localStorage.getItem("pecas"); - precisa so achar onde colocar. lembrar tambem de colocar para reiniciar o tabuleiro no metodo reiniciar.
                 trocaJogador();
                 if(verificaVitoria()){
                     trocaJogador();
