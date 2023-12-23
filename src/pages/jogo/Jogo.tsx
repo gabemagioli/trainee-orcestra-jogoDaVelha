@@ -142,7 +142,7 @@ function Jogo(){
         }
     }
 
-    const limparTabuleiro = ():any =>{//funcao que remove as pecas do tabuleiro e mantem o progresso dos jogadores caso nenhum esteja com 3 pontos, nao tiar as pontuacoes
+    const limparTabuleiro = ():any =>{//funcao que remove as pecas do tabuleiro e mantem o progresso dos jogadores caso nenhum esteja com 3 pontos, nao tira as pontuacoes
         setJogando(true);
         setJogo(jogoInicial);
         setSimboloAtual("X");
@@ -179,7 +179,7 @@ function Jogo(){
                     <button className={styles.botaoVoltar} onClick={()=> navigate("/")}>Voltar</button>
                 </div>
 
-                <h1 className={styles.vezJogador}>Vez do jogador: {simboloAtual}</h1>
+                <h1 className={styles.vezJogador}><img src="https://cdn-icons-png.flaticon.com/512/10791/10791552.png" className={styles.engrenagem} /> Vez do jogador: {simboloAtual} <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/cog-settings-512.png" className={styles.engrenagem}/></h1>
 
                 <div className={styles.placar}>
                     <div className={styles.pontuacao}>
